@@ -3,7 +3,7 @@ module.exports = {
       let response = {};
       response.message = message;
       response.code = statusCode;
-      res.send(statusCode, response);
+      res.status(statusCode).send(response);
     }
   };
-  
+    

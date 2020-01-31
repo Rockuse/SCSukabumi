@@ -22,8 +22,8 @@ const cityData={
             let city=doc.map(row=>{
                 return new M_City(row);
             });
-            callback(city)
-            });
+            callback(city);
+            })
     },
     DelOne: (callback,id)=>{
         tbl.deleteOne({city_code:id});

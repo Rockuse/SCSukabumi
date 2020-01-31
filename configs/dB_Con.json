@@ -2,7 +2,7 @@
     "local": {
       "host": "mongodb://localhost",
       "port": 27017,
-      "name": "dBSC"
+      "name": "dbYnci"
     }
 }
   
