@@ -3,6 +3,11 @@
       "host": "mongodb://localhost",
       "port": 27017,
       "name": "dbYnci"
+    },
+    "hosting":{
+      "host":"mongodb://Rockuse:150396Fa.,714@ds060649.mlab.com",
+      "port": 60649,
+      "name": "dbynci"
     }
 }
-  
+

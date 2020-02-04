@@ -1,10 +1,11 @@
-const MongoDB=require('mongodb');
-const dbConfig=require('../configs/dB_Config');
+const MongoDB=require('mongodb').MongoClient;
+const dbConfig=require('../configs/dB_Config').hosting;
 
 let connection =null;
 const dbConnection={
-    connect:cb=>{
-        let url=dbConfig.host+':'+dbConfig.port+'/'+dbConfig.name;
+    connect:callback=>{
+        //  let url=dbConfig.hosting.host;
+         let url=dbConfig.host+':'+dbConfig.port+'/'+dbConfig.name;
         MongoDB.connect(
             url,
             {
@@ -17,7 +18,8 @@ const dbConnection={
                 {
                     connection=db.db(dbConfig.name);
                 }
-                cb(err,db)
+                else{console.log(`[MongoDB connection] ERROR: ${err}`);}
+                callback(err,db)
             }
         );
     },

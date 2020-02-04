@@ -6,6 +6,7 @@ const key = require('../configs/authconfig.json').secretKey
 const apiUser = {
     getUser: (req, res, next) => {
         let username = req.params.tes
+        
         dUser.getOne(items => {
             helper.sendResponse(res, 200, items)
         }, username)

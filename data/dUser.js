@@ -1,6 +1,6 @@
 const DB=require('../models/database').getConnection();
 const mUser=require('../models/mUser');
-const coll=DB.collection('user');
+const coll=DB.collection('tmUser');
 const userData={
     // Get Data
     getOne:(callback,user)=>{
