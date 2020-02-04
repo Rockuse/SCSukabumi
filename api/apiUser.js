@@ -6,7 +6,6 @@ const key = require('../configs/authconfig.json').secretKey
 const apiUser = {
     getUser: (req, res, next) => {
         let username = req.params.tes
-        
         dUser.getOne(items => {
             helper.sendResponse(res, 200, items)
         }, username)
@@ -14,6 +13,7 @@ const apiUser = {
     userAuth: (req, res, next) => {
         let pass = req.body.password;
         let username = req.body.username;
+        
         dUser.getOne(item => {
             if (item[0]) {
                 if (bt.compareSync(pass, item[0].password)) {
@@ -45,6 +45,9 @@ const apiUser = {
                     modifieddate: Date.now(),
                     type: parseInt(req.body.type)
                 }
+                dUser.autoInc(item=>{
+                    newUser.user_id=parseInt(item[0].user_id)+1
+                    })
                 bt.genSalt(10, (err, salt) => {
                     bt.hash(password, salt, (err, hash) => {
                         newUser.password = hash
