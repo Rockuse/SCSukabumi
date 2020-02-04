@@ -25,6 +25,12 @@ const userData={
                 callback(doc)
             })
     },
+    autoInc:(callback)=>{
+        coll.find({},{user_id:1,_id:0})
+        .sort({user_id:-1})
+        .limit(1)
+        .toArray((err,doc)=>{callback(doc)})
+    }
 
 }
 

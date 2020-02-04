@@ -60,7 +60,6 @@ const apiUser = {
         let username = req.body.username;
         let newPass = req.body.newPass
         dUser.getOne(item => {
-            console.log(item)
             if (item.username == username) {
                 const updatePass = {
                     username: username,
@@ -81,6 +80,11 @@ const apiUser = {
                 helper.sendResponse(res, 404, 'not Found')
             }
         }, username)
+    },
+    increment:(req,res,next)=>{
+        dUser.autoInc(item=>{
+        helper.sendResponse(res,200,item)
+        })
     }
 }
 
