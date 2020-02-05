@@ -10,10 +10,14 @@ con.connect((err,db)=>{
     }else{
         console.log('[DATABASE] Connected');
         const port = process.env.PORT || 4000;
- 
-        app.use(bodyParser.json()); 
-        app.use(bodyParser.urlencoded({extended:true}))
-        app.use(bodyParser.raw({type: '*/*' }))
+        var rawBodySaver = function (req, res, buf, encoding) {
+            if (buf && buf.length) {
+              req.rawBody = buf.toString(encoding || 'utf8');
+            }
+          }
+        app.use(bodyParser.json({ verify: rawBodySaver})); 
+        app.use(bodyParser.urlencoded({ verify: rawBodySaver,extended:true}))
+        app.use(bodyParser.raw({ verify: rawBodySaver,type: '*/*' }))
         // app.configure(function(){
         //     app.use(express.bodyParser());
         //     app.use(app.router);
