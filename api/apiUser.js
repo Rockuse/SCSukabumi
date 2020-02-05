@@ -49,7 +49,7 @@ const apiUser = {
                     newUser.user_id=parseInt(item[0].user_id)+1
                     })
                 bt.genSalt(10, (err, salt) => {
-                    bt.hash(password, salt, (err, hash) => {
+                    bt.hash(newUser.password, salt, (err, hash) => {
                         newUser.password = hash
                         dUser.insertOne(items => {
                             helper.sendResponse(res, 200, items);
@@ -61,7 +61,7 @@ const apiUser = {
     },
     changePass: (req, res, next) => {
         let username = req.body.username;
-        let newPass = req.body.newPass
+        let newPass = req.body.password
         dUser.getOne(item => {
             if (item.username == username) {
                 const updatePass = {
@@ -84,11 +84,7 @@ const apiUser = {
             }
         }, username)
     },
-    increment:(req,res,next)=>{
-        dUser.autoInc(item=>{
-        helper.sendResponse(res,200,item)
-        })
-    }
+
 }
 
 module.exports = apiUser;

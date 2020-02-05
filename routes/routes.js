@@ -5,5 +5,5 @@ module.exports=app=>{
     app.get('/auth/login/:tes',data.getUser);
     app.post('/auth/login',data.userAuth);
     app.post('/auth/login/change',data.changePass);
-    app.get('/tes',data.increment)
+    app.post('/auth/register',data.insertAdmin);
 }
