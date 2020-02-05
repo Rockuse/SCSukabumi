@@ -10,9 +10,10 @@ con.connect((err,db)=>{
     }else{
         console.log('[DATABASE] Connected');
         const port = process.env.PORT || 4000;
-        // app.use(bodyParser.json()); 
-        // app.use(bodyParser.urlencoded({extended:true}))
-        app.use(bodyParser.raw({type:'text/xml' }))
+ 
+        app.use(bodyParser.json()); 
+        app.use(bodyParser.urlencoded({extended:true}))
+        app.use(bodyParser.raw({type: '*/*' }))
         // app.configure(function(){
         //     app.use(express.bodyParser());
         //     app.use(app.router);
