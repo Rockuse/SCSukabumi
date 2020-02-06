@@ -83,7 +83,7 @@ const apiUser = {
                 helper.sendResponse(res, 404, 'not Found')
             }
         }, username)
-    },
+    }
 
 }
 
