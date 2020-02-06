@@ -3,6 +3,7 @@ const morgan= require("morgan");
 const bodyParser=require('body-parser')
 const app=express(); 
 const con=require('./models/database')
+const cors=require('cors')
 
 con.connect((err,db)=>{
     if(err !=null){
@@ -10,7 +11,7 @@ con.connect((err,db)=>{
     }else{
         console.log('[DATABASE] Connected');
         const port = process.env.PORT || 4000;
-
+        app.use(cors())
          app.use(bodyParser.json()); 
          app.use(bodyParser.urlencoded({extended:true}))
          app.use(bodyParser.raw({type:'application/json' }))
