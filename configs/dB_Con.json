@@ -8,6 +8,10 @@
       "host":"mongodb://Rockuse:150396Fa.,714@ds060649.mlab.com",
       "port": 60649,
       "name": "dbynci"
+    },
+    "atlas":{
+      "host":"mongodb+srv://rockuse:150396Fa.%2C714@rockuse-zlkqx.gcp.mongodb.net/test?retryWrites=true&w=majority",
+      "name": "dbynci"
     }
 }
 

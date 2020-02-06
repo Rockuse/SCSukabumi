@@ -13,7 +13,6 @@ const apiUser = {
     userAuth: (req, res, next) => {
         let pass = req.body.password;
         let username = req.body.username;
-        console.log(req.body)
         dUser.getOne(item => {
             if (item[0]) {
                 if (bt.compareSync(pass, item[0].password)) {
