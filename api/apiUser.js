@@ -31,33 +31,7 @@ const apiUser = {
             }
         }, username)
     },
-    insertAdmin: (req, res, next) => {
-        let username = req.body.username
-        dUser.getOne(item => {
-            if (item.username) {
-                helper.sendResponse(res, 401, 'Username Already Exist!')
-            } else {
-                const newUser = {
-                    username: req.body.username,
-                    password: req.body.password,
-                    modifiedby: 'fahmi',
-                    modifieddate: Date.now(),
-                    type: parseInt(req.body.type)
-                }
-                dUser.autoInc(item=>{
-                    newUser.user_id=parseInt(item[0].user_id)+1
-                    })
-                bt.genSalt(10, (err, salt) => {
-                    bt.hash(newUser.password, salt, (err, hash) => {
-                        newUser.password = hash
-                        dUser.insertOne(items => {
-                            helper.sendResponse(res, 200, items);
-                        }, newUser);
-                    })
-                })
-            }
-        }, username)
-    },
+  
     changePass: (req, res, next) => {
         let username = req.body.username;
         let newPass = req.body.password
@@ -82,6 +56,11 @@ const apiUser = {
                 helper.sendResponse(res, 404, 'not Found')
             }
         }, username)
+    },
+    auto:(req,res,next)=>{
+        dUser.autoInc(item=>{
+            console.log(item)
+        })
     }
 
 }

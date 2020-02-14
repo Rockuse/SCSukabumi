@@ -11,7 +11,7 @@
     },
     "atlas":{
       "host":"mongodb+srv://rockuse:150396Fa.%2C714@rockuse-zlkqx.gcp.mongodb.net/test?retryWrites=true&w=majority",
-      "name": "dbynci"
+      "name": "dbYnci"
     }
 }
 

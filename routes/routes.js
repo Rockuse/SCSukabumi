@@ -1,9 +1,11 @@
-const data=require('../api/apiUser')
+const user=require('../api/apiUser');
+const person=require('../api/apiPerson')
 const auth=require('../helpers/authHelper').checkToken
 module.exports=app=>{
-    app.get('/hola/:tes',data.getUser);
-    app.get('/auth/login/:tes',data.getUser);
-    app.post('/auth/login',data.userAuth);
-    app.post('/auth/login/change',data.changePass);
-    app.post('/auth/register',data.insertAdmin);
+    app.get('/hola/:tes',user.getUser);
+    app.get('/auth/login/:tes',user.getUser);
+    app.get('/tes',user.auto)
+    app.post('/auth/login',user.userAuth);
+    app.post('/auth/login/change',user.changePass);
+    app.post('/auth/register',person.insertPerson);
 }

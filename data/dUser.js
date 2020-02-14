@@ -4,17 +4,17 @@ const coll=DB.collection('tmUser');
 const userData={
     // Get Data
     getOne:(callback,user)=>{
-        coll.find({username:user})
+        coll.find()
         .sort({username:1})
         .toArray((err,doc)=>{
-           
+            console.log(doc)
             callback(doc);
             })
     },
     // Insert Data
     insertOne:(callback,user)=>{
         coll.insertOne(user,(err,doc)=>{
-            callback(doc)
+            callback(doc)               
         })
     },
     // Update Password
@@ -29,7 +29,9 @@ const userData={
         coll.find({},{projection:{user_id:1,_id:0}})
         .sort({user_id:-1})
         .limit(1)
-        .toArray((err,doc)=>{callback(doc)})
+        .toArray((err,doc)=>{
+            console.log(doc)
+            callback(doc)})
     }
 
 }
